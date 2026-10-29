@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Verification Hub - QTPedia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-white font-sans antialiased min-h-screen">
+
+    <!-- ADMIN NAVBAR -->
+    <nav class="border-b border-slate-800 bg-slate-950 px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <span class="text-xl font-black tracking-wider text-blue-500">QT<span class="text-white">Pedia</span></span>
+            <span class="bg-red-500/10 text-red-400 text-xs px-2.5 py-1 rounded-md border border-red-500/20 font-semibold">
+                <i class="fa-solid fa-shield-dog"></i> ADMIN CONTROL GATE
+            </span>
+        </div>
+        <div class="text-xs text-slate-400">
+            Logged in as: <span class="text-white font-medium">Master Admin</span>
+        </div>
+    </nav>
+
+    <!-- MAIN DASHBOARD CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        
+        <!-- STATS ROW -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                <p class="text-xs text-slate-400 uppercase font-semibold">Pending Approvals</p>
+                <h3 class="text-2xl font-bold text-amber-400 mt-1">12</h3>
+            </div>
+            <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                <p class="text-xs text-slate-400 uppercase font-semibold">Verified Businesses</p>
+                <h3 class="text-2xl font-bold text-emerald-400 mt-1">1,450</h3>
+            </div>
+            <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                <p class="text-xs text-slate-400 uppercase font-semibold">Celebrities & Officials</p>
+                <h3 class="text-2xl font-bold text-purple-400 mt-1">84</h3>
+            </div>
+            <div class="bg-slate-950 border border-slate-800 p-5 rounded-xl">
+                <p class="text-xs text-slate-400 uppercase font-semibold">Blocked / Spam Reports</p>
+                <h3 class="text-2xl font-bold text-red-400 mt-1">3</h3>
+            </div>
+        </div>
+
+        <!-- PENDING PROFILES APPROVAL QUEUE -->
+        <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 shadow-xl mb-8">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-lg font-bold">Pending Profile Verification Queue</h2>
+                    <p class="text-xs text-slate-400">Review legal IDs (GSTIN/Udyam) before issuing trust badges.</p>
+                </div>
+                <span class="text-xs bg-blue-500/10 text-blue-400 px-3 py-1 rounded-lg border border-blue-500/20">Action Required</span>
+            </div>
+
+            <!-- Request Table -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-900 text-slate-400 text-xs uppercase border-b border-slate-800">
+                        <tr>
+                            <th class="p-3">Entity Name</th>
+                            <th class="p-3">Category</th>
+                            <th class="p-3">Legal Registration (GSTIN / ID)</th>
+                            <th class="p-3">Contact</th>
+                            <th class="p-3 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800 text-xs">
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-slate-900/50">
+                            <td class="p-3 font-medium text-white">
+                                <div class="font-bold">Shree Ram Agro Foods</div>
+                                <span class="text-slate-500">qtpedia.in/shreeram</span>
+                            </td>
+                            <td class="p-3">
+                                <span class="bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-semibold">🏢 Business</span>
+                            </td>
+                            <td class="p-3 font-mono text-slate-300">24AABCS1234F1Z9</td>
+                            <td class="p-3 text-slate-400">+91 98250 11223</td>
+                            <td class="p-3 text-right space-x-2">
+                                <button class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg font-medium transition">Approve & Issue Badge</button>
+                                <button class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white px-3 py-1.5 rounded-lg font-medium transition border border-red-500/30">Reject</button>
+                            </td>
+                        </tr>
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-slate-900/50">
+                            <td class="p-3 font-medium text-white">
+                                <div class="font-bold">Dr. Aryan Sharma</div>
+                                <span class="text-slate-500">qtpedia.in/aryansharma</span>
+                            </td>
+                            <td class="p-3">
+                                <span class="bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded font-semibold">⭐ Celebrity</span>
+                            </td>
+                            <td class="p-3 font-mono text-slate-300">Media Verified / Press ID #998</td>
+                            <td class="p-3 text-slate-400">aryan@official.com</td>
+                            <td class="p-3 text-right space-x-2">
+                                <button class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg font-medium transition">Approve & Issue Badge</button>
+                                <button class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white px-3 py-1.5 rounded-lg font-medium transition border border-red-500/30">Reject</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

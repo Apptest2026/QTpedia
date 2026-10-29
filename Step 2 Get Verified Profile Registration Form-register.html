@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Verified Profile - QTPedia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-900 text-white font-sans antialiased py-12 px-4">
+
+    <div class="max-w-2xl mx-auto bg-slate-950 border border-slate-800 rounded-2xl p-8 shadow-2xl">
+        <div class="text-center mb-8">
+            <span class="text-2xl font-black tracking-wider text-blue-500">QT<span class="text-white">Pedia</span></span>
+            <h1 class="text-2xl font-bold mt-2">Claim Your Verified Live Profile</h1>
+            <p class="text-slate-400 text-xs mt-1">Get your green, purple, or gold trust badge after manual verification.</p>
+        </div>
+
+        <form class="space-y-5">
+            <!-- Category Selection -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Select Your Profile Category</label>
+                <select class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                    <option value="business">🏢 Verified Business / MSME (Green Badge)</option>
+                    <option value="celebrity">⭐ Celebrity & Public Figure (Purple Badge)</option>
+                    <option value="government">🏛️ Government & Official (Gold/Blue Badge)</option>
+                    <option value="citizen">✔️ Common Verified Citizen (Grey Badge)</option>
+                </select>
+            </div>
+
+            <!-- Full Name / Business Name -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Full Name / Company Name</label>
+                    <input type="text" placeholder="e.g. MINDIGEST Pharma" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Unique Username (URL)</label>
+                    <input type="text" placeholder="qtpedia.in/mindigest" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- Legal / Verification Proof ID -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Legal Registration Number (GSTIN / Udyam / Gov ID)</label>
+                <input type="text" placeholder="e.g. 24AAACM1234F1Z0" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                <span class="text-[10px] text-slate-500 mt-1 block">Yeh data 100% secure rahega aur sirf verification ke liye use hoga.</span>
+            </div>
+
+            <!-- Direct Contact & WhatsApp Lead Gen -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">WhatsApp B2B Number</label>
+                    <input type="text" placeholder="+91 98765 43210" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Official Email</label>
+                    <input type="email" placeholder="support@company.com" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Short Bio / About Business</label>
+                <textarea rows="3" placeholder="Aapki company ya profile kya karti hai..." class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3.5 rounded-xl font-bold transition shadow-lg shadow-blue-600/30">
+                Submit For Verification & Badge Approval
+            </button>
+        </form>
+    </div>
+
+</body>
+</html>
