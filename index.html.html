@@ -163,3 +163,135 @@
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Verified Profile - QTPedia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Supabase JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-slate-900 text-white font-sans antialiased py-12 px-4">
+
+    <div class="max-w-2xl mx-auto bg-slate-950 border border-slate-800 rounded-2xl p-8 shadow-2xl">
+        <div class="text-center mb-8">
+            <span class="text-2xl font-black tracking-wider text-blue-500">QT<span class="text-white">Pedia</span></span>
+            <h1 class="text-2xl font-bold mt-2">Claim Your Verified Live Profile</h1>
+            <p class="text-slate-400 text-xs mt-1">Get your green, purple, or gold trust badge after manual verification.</p>
+        </div>
+
+        <form id="profileForm" class="space-y-5">
+            <!-- Category Selection -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase mb-2">Select Your Profile Category</label>
+                <select id="category" required class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                    <option value="business">🏢 Verified Business / MSME (Green Badge)</option>
+                    <option value="celebrity">⭐ Celebrity & Public Figure (Purple Badge)</option>
+                    <option value="government">🏛️ Government & Official (Gold/Blue Badge)</option>
+                    <option value="citizen">✔️ Common Verified Citizen (Grey Badge)</option>
+                </select>
+            </div>
+
+            <!-- Full Name & Username -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Full Name / Company Name</label>
+                    <input type="text" id="fullName" required placeholder="e.g. MINDIGEST Pharma" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Unique Username</label>
+                    <input type="text" id="username" required placeholder="e.g. mindigest" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- Legal Registration ID -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Legal Registration Number (GSTIN / Udyam / Gov ID)</label>
+                <input type="text" id="registrationId" required placeholder="e.g. 24AAACM1234F1Z0" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+            </div>
+
+            <!-- Direct Contact & Email -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">WhatsApp B2B Number</label>
+                    <input type="text" id="whatsapp" placeholder="+91 98765 43210" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Official Email</label>
+                    <input type="email" id="officialEmail" required placeholder="support@company.com" class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500">
+                </div>
+            </div>
+
+            <!-- Bio -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Short Bio / Description</label>
+                <textarea id="bio" rows="3" placeholder="Aapki company ya profile kya karti hai..." class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-blue-500"></textarea>
+            </div>
+
+            <!-- Status Message Area -->
+            <div id="statusMsg" class="hidden p-3 rounded-xl text-center text-xs font-semibold"></div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3.5 rounded-xl font-bold transition shadow-lg shadow-blue-600/30">
+                Submit For Verification & Badge Approval
+            </button>
+        </form>
+    </div>
+
+    <script>
+        // SUPABASE DATABASE CONNECTION SETUP
+        const SUPABASE_URL = "YOUR_SUPABASE_URL"; 
+        const SUPABASE_KEY = "YOUR_SUPABASE_ANON_KEY"; 
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const form = document.getElementById('profileForm');
+        const statusMsg = document.getElementById('statusMsg');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Submitting to QTPedia Database...";
+
+            const newProfile = {
+                user_id: crypto.randomUUID(), // Unique Identifier
+                full_name: document.getElementById('fullName').value,
+                username: document.getElementById('username').value.toLowerCase().trim(),
+                category: document.getElementById('category').value,
+                registration_id: document.getElementById('registrationId').value,
+                official_email: document.getElementById('officialEmail').value,
+                whatsapp_b2b: document.getElementById('whatsapp').value,
+                bio_description: document.getElementById('bio').value,
+                verification_status: 'pending',
+                badge_color: 'grey'
+            };
+
+            // INSERT DATA INTO SUPABASE 'profiles' TABLE
+            const { data, error } = await supabaseClient
+                .from('profiles')
+                .insert([newProfile]);
+
+            if (error) {
+                statusMsg.className = "p-3 rounded-xl text-center text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/20";
+                statusMsg.innerText = "Error: " + error.message;
+                statusMsg.classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Submit For Verification & Badge Approval";
+            } else {
+                statusMsg.className = "p-3 rounded-xl text-center text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+                statusMsg.innerText = "🎉 Profile submitted successfully! Pending verification by Admin.";
+                statusMsg.classList.remove('hidden');
+                form.reset();
+                submitBtn.innerText = "Submitted Successfully";
+            }
+        });
+    </script>
+</body>
+</html>// SUPABASE DATABASE CONNECTION SETUP
+const SUPABASE_URL = "https://zlxkckceachqeegvzcmg.supabase.co"; 
+const SUPABASE_KEY = "sb_publishable_iehCKp1fSUhCc65Xo3-T9Q_50GGhQIU";
